@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -9,6 +9,16 @@ export class SignupComponent {
 type:string="password";
 isText:boolean=false;
 eyeIcon:string="fa-eye-slash";
+
+signform:FormGroup;
+constructor(private fb:FormBuilder){
+  this.signform=this.fb.group({
+    uname:["",Validators.required],
+    pass:["",Validators.required],
+    email:["",Validators.required]
+  })
+}
+
 
 hideShowPass(){
  this.isText =!this.isText;
